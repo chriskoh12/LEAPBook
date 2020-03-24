@@ -5,6 +5,10 @@ let read_json_file = () => {
 	return fs.readFileSync(file);
 }
 
+exports.list = () => {
+	return JSON.parse(read_json_file());
+};
+
 exports.calculate_prices = (tax) => {
 	let json_result = JSON.parse(read_json_file());
 	for(let i = 0; i < json_result.length; i++) {
