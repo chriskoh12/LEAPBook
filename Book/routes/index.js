@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var books = require('../modules/books');
+var taxes = require('../modules/taxes');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -24,16 +25,11 @@ router.get('/books/team', (request, response, next) => {
 router.get('/books/all/:city', (request, response, next) => {
   const city = request.params.city.toLowerCase();
   var taxRate;
-  console.log('City is ' + city);
 
-  if(city === 'raleigh'){
-    taxRate = 0.075;
-  }
-  else if(city === 'durham'){
-    taxRate = 0.08;
-  }
-  else {
-    //TODO deal with invalid city
+  taxRate = taxes.find_tax(city);
+  if(taxRate === -1){
+    console.log("invalid city");
+    response.sendStatus(400);
   }
 
   const result = books.calculate_prices(taxRate);
