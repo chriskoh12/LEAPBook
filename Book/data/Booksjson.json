@@ -1,5 +1,4 @@
-{
-  "result": [
+[
   {
     "Title": "Lord of the Rings",
     "Author": "J.R.R Tolkien",
@@ -27,5 +26,6 @@
     "price": 41.77,
     "ISBN": "0064471195",
     "publisher": "HarperCollins"
-  }]
-}
+  }
+]
+
